@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+RewriteRule ^api/(.+)$ api.php?tipoDolar=$1 [QSA,L]
+RewriteRule ^api/(.+)/$ api.php?tipoDolar=$1 [QSA,L]
+
+
+ErrorDocument 401 /404-page.php
+ErrorDocument 403 /404-page.php
+ErrorDocument 404 /404-page.php
+ErrorDocument 500 /404-page.php
+</IfModule>
